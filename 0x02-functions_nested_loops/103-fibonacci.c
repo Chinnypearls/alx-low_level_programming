@@ -1,20 +1,31 @@
 #include <stdio.h>
 
-int main() {
-    int firstTerm = 1;
-    int secondTerm = 2;
-    int nextTerm = 0;
-    int sum = 2; // Start with 2 to account for the second term being even
+/**
+ * main - finds and prints the sum of the even-valued terms
+ * followed by a new line
+ * Return: Always 0 (Success)
+ */
+int main(void)
+{
+	int i;
+	unsigned long int j, k, next, sum;
 
-    while (nextTerm <= 4000000) {
-        nextTerm = firstTerm + secondTerm;
-        if (nextTerm % 2 == 0) {
-            sum += nextTerm;
-        }
-        firstTerm = secondTerm;
-        secondTerm = nextTerm;
-    }
+	j = 1;
+	k = 2;
+	sum = 0;
 
-    printf("The sum of even-valued terms in the Fibonacci sequence is %d.\n", sum);
-    return 0;
+	for (i = 1; i <= 33; ++i)
+	{
+		if (j < 4000000 && (j % 2) == 0)
+		{
+			sum = sum + j;
+		}
+		next = j + k;
+		j = k;
+		k = next;
+	}
+
+	printf("%lu\n", sum);
+
+	return (0);
 }
